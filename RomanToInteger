@@ -1,0 +1,59 @@
+class Solution {
+        static String s = "MCMXCIV";
+
+    static int romanNumeralsToInteger(String c) {
+        if (c.equals("IV")) {
+            return 4;
+        } else if (c.equals("IX")) {
+            return 9;
+        } else if (c.equals("XL")) {
+            return 40;
+        } else if (c.equals("XC")) {
+            return 90;
+        } else if (c.equals("CD")) {
+            return 400;
+        } else if (c.equals("CM")) {
+            return 900;
+        } else if (c.equals("I")) {
+            return 1;
+        } else if (c.equals("V")) {
+            return 5;
+        } else if (c.equals("X")) {
+            return 10;
+        } else if (c.equals("L")) {
+            return 50;
+        } else if (c.equals("C")) {
+            return 100;
+        } else if (c.equals("D")) {
+            return 500;
+        }
+        return 1000;
+    }
+    public int romanToInt(String s) {
+
+    int sum = 0;
+        int[] storeNumbersForSum = new int[15];
+
+
+        for (int i = 0; i < s.length(); i++) {
+            if ((i < s.length() - 1) && ((s.charAt(i) == 'I' && s.charAt(i + 1) == 'X')
+                    || (s.charAt(i) == 'I' && s.charAt(i + 1) == 'V') || (s.charAt(i) == 'X' && s.charAt(i + 1) == 'L')
+                    || (s.charAt(i) == 'X' && s.charAt(i + 1) == 'C') || (s.charAt(i) == 'C' && s.charAt(i + 1) == 'D')
+                    || (s.charAt(i) == 'C' && s.charAt(i + 1) == 'M'))) {
+                storeNumbersForSum[i] = romanNumeralsToInteger("" + s.charAt(i) + s.charAt(i+1));
+                i++;
+            } else {
+                storeNumbersForSum[i] = romanNumeralsToInteger("" + s.charAt(i));
+            }
+        }
+
+            for (int j = 0; j < storeNumbersForSum.length; j++) {
+                 sum = sum + storeNumbersForSum[j];
+            }
+
+           return sum;
+
+
+        
+    }
+}
