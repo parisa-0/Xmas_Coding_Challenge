@@ -1,5 +1,4 @@
 class Solution {
-        static String s = "MCMXCIV";
 
     static int romanNumeralsToInteger(String c) {
         if (c.equals("IV")) {
